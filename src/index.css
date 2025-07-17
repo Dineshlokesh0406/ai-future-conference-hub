@@ -96,17 +96,20 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
+    /* Deep Blue Primary for dark mode */
+    --primary: 210 100% 70%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    /* Teal Secondary for dark mode */
+    --secondary: 180 100% 60%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
 
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    /* Gold Accent for dark mode */
+    --accent: 45 100% 65%;
+    --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
@@ -114,6 +117,12 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+
+    /* Conference Specific Colors for dark mode */
+    --conference-blue: 210 100% 70%;
+    --conference-teal: 180 100% 60%;
+    --conference-gold: 45 100% 65%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -149,13 +158,13 @@
   /* Conference Button Variants */
   .btn-conference-primary {
     @apply bg-gradient-to-r from-primary to-secondary text-primary-foreground;
-    @apply px-8 py-4 rounded-full font-semibold text-lg;
+    @apply px-6 py-3 rounded-full font-semibold text-base;
     @apply shadow-lg hover:shadow-xl transform hover:scale-105;
     @apply transition-all duration-300;
   }
 
   .btn-conference-gold {
-    @apply bg-gradient-to-r from-accent to-accent-light text-accent-foreground;
+    @apply bg-gradient-to-r from-accent to-accent text-accent-foreground;
     @apply px-6 py-3 rounded-full font-semibold;
     @apply shadow-lg hover:shadow-xl transform hover:scale-105;
     @apply transition-all duration-300;
@@ -163,9 +172,9 @@
 
   /* Card Styles */
   .card-conference {
-    @apply bg-card border border-border rounded-xl p-6;
-    @apply shadow-lg hover:shadow-2xl;
-    @apply transition-all duration-300 hover:transform hover:scale-[1.02];
+    @apply bg-card border border-border rounded-lg p-4;
+    @apply shadow-md hover:shadow-lg;
+    @apply transition-all duration-300 hover:transform hover:scale-[1.01];
     background: var(--gradient-card);
   }
 

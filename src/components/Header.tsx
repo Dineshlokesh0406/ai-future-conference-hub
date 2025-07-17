@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Download, User, LogIn } from 'lucide-react';
+import { Menu, X, Download, User, LogIn, Sun, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import collegeLogo from '@/assets/college-logo.jpg';
@@ -7,14 +7,31 @@ import collegeLogo from '@/assets/college-logo.jpg';
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
+
+    // Check for saved theme preference or default to light mode
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const shouldBeDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+    
+    setIsDark(shouldBeDark);
+    document.documentElement.classList.toggle('dark', shouldBeDark);
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleTheme = () => {
+    const newTheme = !isDark;
+    setIsDark(newTheme);
+    document.documentElement.classList.toggle('dark', newTheme);
+    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
+  };
 
   const navItems = [
     { label: 'Home', href: '#home' },
@@ -70,6 +87,15 @@ const Header = () => {
 
           {/* Desktop Actions */}
           <div className="hidden lg:flex items-center space-x-4">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={toggleTheme}
+              className="p-2"
+              title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+            >
+              {isDark ? <Sun size={16} /> : <Moon size={16} />}
+            </Button>
             <Button variant="outline" size="sm" className="space-x-2">
               <Download size={16} />
               <span>Brochure</span>
@@ -118,6 +144,14 @@ const Header = () => {
                 </nav>
 
                 <div className="flex flex-col space-y-3 pt-4 border-t">
+                  <Button 
+                    variant="outline" 
+                    onClick={toggleTheme}
+                    className="space-x-2 justify-start"
+                  >
+                    {isDark ? <Sun size={16} /> : <Moon size={16} />}
+                    <span>{isDark ? "Light Mode" : "Dark Mode"}</span>
+                  </Button>
                   <Button variant="outline" className="space-x-2 justify-start">
                     <Download size={16} />
                     <span>Download Brochure</span>

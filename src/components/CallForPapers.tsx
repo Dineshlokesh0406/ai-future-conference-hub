@@ -98,22 +98,22 @@ const CallForPapers = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="text-center p-4 bg-conference-teal/5 rounded-lg">
-                    <div className="font-semibold text-conference-teal mb-2">Students</div>
-                    <div className="text-sm text-muted-foreground">UG/PG Students</div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="text-center p-3 bg-conference-teal/5 rounded-lg hover:bg-conference-teal/10 transition-colors cursor-pointer">
+                    <div className="font-semibold text-conference-teal mb-1 text-sm">Students</div>
+                    <div className="text-xs text-muted-foreground">UG/PG Students</div>
                   </div>
-                  <div className="text-center p-4 bg-primary/5 rounded-lg">
-                    <div className="font-semibold text-primary mb-2">Researchers</div>
-                    <div className="text-sm text-muted-foreground">Research Scholars</div>
+                  <div className="text-center p-3 bg-primary/5 rounded-lg hover:bg-primary/10 transition-colors cursor-pointer">
+                    <div className="font-semibold text-primary mb-1 text-sm">Researchers</div>
+                    <div className="text-xs text-muted-foreground">Research Scholars</div>
                   </div>
-                  <div className="text-center p-4 bg-secondary/5 rounded-lg">
-                    <div className="font-semibold text-secondary mb-2">Faculty</div>
-                    <div className="text-sm text-muted-foreground">Academic Staff</div>
+                  <div className="text-center p-3 bg-secondary/5 rounded-lg hover:bg-secondary/10 transition-colors cursor-pointer">
+                    <div className="font-semibold text-secondary mb-1 text-sm">Faculty</div>
+                    <div className="text-xs text-muted-foreground">Academic Staff</div>
                   </div>
-                  <div className="text-center p-4 bg-accent/5 rounded-lg">
-                    <div className="font-semibold text-accent mb-2">Industry</div>
-                    <div className="text-sm text-muted-foreground">Professionals</div>
+                  <div className="text-center p-3 bg-accent/5 rounded-lg hover:bg-accent/10 transition-colors cursor-pointer">
+                    <div className="font-semibold text-accent mb-1 text-sm">Industry</div>
+                    <div className="text-xs text-muted-foreground">Professionals</div>
                   </div>
                 </div>
               </CardContent>

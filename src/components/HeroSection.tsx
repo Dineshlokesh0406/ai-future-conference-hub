@@ -52,13 +52,16 @@ const HeroSection = () => {
         backgroundAttachment: 'fixed'
       }}
     >
+      {/* AICTE Sponsored Badge - Moved outside hero content */}
+      <div className="absolute top-24 left-1/2 transform -translate-x-1/2 z-20 animate-fade-in">
+        <div className="inline-flex items-center bg-accent/20 backdrop-blur-sm border border-accent/30 rounded-full px-6 py-2">
+          <span className="text-accent font-semibold text-sm">AICTE SPONSORED</span>
+        </div>
+      </div>
+
       {/* Hero Content */}
-      <div className="container mx-auto px-4 text-center text-white relative z-10">
+      <div className="container mx-auto px-4 text-center text-white relative z-10 mt-16">
         <div className="max-w-6xl mx-auto">
-          {/* AICTE Badge */}
-          <div className="inline-flex items-center bg-accent/20 backdrop-blur-sm border border-accent/30 rounded-full px-6 py-2 mb-8 animate-fade-in">
-            <span className="text-accent font-semibold text-sm">AICTE SPONSORED</span>
-          </div>
 
           {/* Main Title */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-slide-up">

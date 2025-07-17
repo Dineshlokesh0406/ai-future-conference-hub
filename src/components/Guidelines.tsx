@@ -40,19 +40,19 @@ const Guidelines = () => {
           </p>
         </div>
 
-        <Tabs defaultValue="author-guidelines" className="max-w-6xl mx-auto">
-          <TabsList className="grid w-full grid-cols-3 mb-8">
-            <TabsTrigger value="author-guidelines" className="flex items-center space-x-2">
-              <FileText size={18} />
-              <span>Author Guidelines</span>
+        <Tabs defaultValue="author-guidelines" className="max-w-5xl mx-auto">
+          <TabsList className="grid w-full grid-cols-3 mb-6">
+            <TabsTrigger value="author-guidelines" className="flex items-center space-x-2 hover:bg-primary/10 transition-colors">
+              <FileText size={16} />
+              <span className="text-sm">Author Guidelines</span>
             </TabsTrigger>
-            <TabsTrigger value="publication-ethics" className="flex items-center space-x-2">
-              <Shield size={18} />
-              <span>Publication Ethics</span>
+            <TabsTrigger value="publication-ethics" className="flex items-center space-x-2 hover:bg-primary/10 transition-colors">
+              <Shield size={16} />
+              <span className="text-sm">Publication Ethics</span>
             </TabsTrigger>
-            <TabsTrigger value="submission-process" className="flex items-center space-x-2">
-              <BookOpen size={18} />
-              <span>Submission Process</span>
+            <TabsTrigger value="submission-process" className="flex items-center space-x-2 hover:bg-primary/10 transition-colors">
+              <BookOpen size={16} />
+              <span className="text-sm">Submission Process</span>
             </TabsTrigger>
           </TabsList>
 

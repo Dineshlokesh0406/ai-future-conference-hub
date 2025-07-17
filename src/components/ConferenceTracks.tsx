@@ -142,30 +142,30 @@ const ConferenceTracks = () => {
         </div>
 
         {/* Tracks Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {tracks.map((track, index) => {
             const IconComponent = track.icon;
             return (
               <Card 
                 key={track.id}
-                className={`card-track bg-gradient-to-br ${getColorClasses(track.color)} cursor-pointer transform transition-all duration-300 hover:scale-105 animate-slide-up`}
+                className="card-track bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20 hover:border-primary/40 cursor-pointer transform transition-all duration-300 hover:scale-105 animate-slide-up"
                 style={{ animationDelay: `${index * 100}ms` }}
                 onClick={() => setSelectedTrack(track.id)}
               >
-                <CardHeader>
-                  <div className={`p-4 rounded-full w-fit mx-auto mb-4 bg-background/50`}>
-                    <IconComponent className={`${getIconColor(track.color)}`} size={32} />
+                <CardHeader className="pb-4">
+                  <div className="p-3 rounded-full w-fit mx-auto mb-3 bg-background/50">
+                    <IconComponent className="text-primary" size={24} />
                   </div>
-                  <CardTitle className="text-center text-lg leading-tight">
+                  <CardTitle className="text-center text-base leading-tight">
                     {track.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground text-center text-sm leading-relaxed">
+                <CardContent className="pt-0">
+                  <p className="text-muted-foreground text-center text-xs leading-relaxed mb-3">
                     {track.description}
                   </p>
-                  <div className="text-center mt-4">
-                    <Button variant="outline" size="sm" className="text-xs">
+                  <div className="text-center">
+                    <Button variant="outline" size="sm" className="text-xs px-4 py-2">
                       View Subtasks
                     </Button>
                   </div>
@@ -177,18 +177,18 @@ const ConferenceTracks = () => {
 
         {/* Track Details Modal */}
         <Dialog open={selectedTrack !== null} onOpenChange={() => setSelectedTrack(null)}>
-          <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
+          <DialogContent className="max-w-2xl max-h-[70vh] overflow-hidden">
             {selectedTrack && (
               <>
                 <DialogHeader>
-                  <DialogTitle className="text-2xl text-primary flex items-center gap-3">
+                  <DialogTitle className="text-xl text-primary flex items-center gap-2">
                     {(() => {
                       const track = tracks.find(t => t.id === selectedTrack);
                       const IconComponent = track?.icon || Brain;
                       return (
                         <>
-                          <div className={`p-3 rounded-full bg-gradient-to-r ${getColorClasses(track?.color || 'primary')}`}>
-                            <IconComponent className={getIconColor(track?.color || 'primary')} size={24} />
+                          <div className="p-2 rounded-full bg-primary/10">
+                            <IconComponent className="text-primary" size={20} />
                           </div>
                           {track?.title}
                         </>
@@ -196,25 +196,25 @@ const ConferenceTracks = () => {
                     })()}
                   </DialogTitle>
                 </DialogHeader>
-                <div className="mt-6">
+                <div className="mt-4 overflow-y-auto max-h-[50vh]">
                   {(() => {
                     const track = tracks.find(t => t.id === selectedTrack);
                     return (
                       <>
-                        <p className="text-muted-foreground mb-6 text-lg">
+                        <p className="text-muted-foreground mb-4 text-sm">
                           {track?.description}
                         </p>
-                        <h4 className="text-lg font-semibold text-primary mb-4">Research Areas & Subtasks:</h4>
-                        <div className="grid gap-3">
+                        <h4 className="text-base font-semibold text-primary mb-3">Research Areas & Subtasks:</h4>
+                        <div className="grid gap-2">
                           {track?.subtasks.map((subtask, index) => (
                             <div 
                               key={index}
-                              className="flex items-start space-x-3 p-4 bg-muted/50 rounded-lg hover:bg-muted/70 transition-colors"
+                              className="flex items-start space-x-2 p-3 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors"
                             >
-                              <div className="flex-shrink-0 w-6 h-6 bg-primary/20 rounded-full flex items-center justify-center mt-0.5">
+                              <div className="flex-shrink-0 w-5 h-5 bg-primary/20 rounded-full flex items-center justify-center mt-0.5">
                                 <span className="text-xs font-bold text-primary">{index + 1}</span>
                               </div>
-                              <p className="text-sm text-foreground leading-relaxed">{subtask}</p>
+                              <p className="text-xs text-foreground leading-relaxed">{subtask}</p>
                             </div>
                           ))}
                         </div>
