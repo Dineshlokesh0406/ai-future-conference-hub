@@ -1,42 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Conference Website Design System - Deep Blues, Teals, and Gold Accents */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Conference Color Palette - Light Theme */
+    --background: 0 0% 98%;
+    --foreground: 210 100% 8%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 210 100% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 210 100% 8%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Deep Blue Primary */
+    --primary: 210 100% 15%;
+    --primary-foreground: 0 0% 98%;
+    --primary-light: 210 80% 25%;
+    --primary-dark: 210 100% 10%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Teal Secondary */
+    --secondary: 180 100% 20%;
+    --secondary-foreground: 0 0% 98%;
+    --secondary-light: 180 80% 30%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Gold Accent */
+    --accent: 45 100% 50%;
+    --accent-foreground: 210 100% 8%;
+    --accent-light: 45 100% 60%;
+    --accent-dark: 45 100% 40%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 95%;
+    --muted-foreground: 210 20% 40%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 210 30% 90%;
+    --input: 210 30% 90%;
+    --ring: 210 100% 15%;
 
-    --radius: 0.5rem;
+    /* Conference Specific Colors */
+    --conference-blue: 210 100% 15%;
+    --conference-teal: 180 100% 20%;
+    --conference-gold: 45 100% 50%;
+    --conference-light-blue: 210 80% 95%;
+    --conference-light-teal: 180 80% 95%;
+    --conference-light-gold: 45 100% 95%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 50%, hsl(var(--accent)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(var(--muted)));
+
+    /* Shadows */
+    --shadow-card: 0 4px 20px -2px hsl(var(--primary) / 0.1);
+    --shadow-button: 0 4px 14px 0 hsl(var(--primary) / 0.2);
+    --shadow-hero: 0 25px 50px -12px hsl(var(--primary) / 0.25);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +131,85 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-primary;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-primary;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  p, span, div {
+    font-family: 'Open Sans', sans-serif;
+  }
+}
+
+@layer components {
+  /* Conference Button Variants */
+  .btn-conference-primary {
+    @apply bg-gradient-to-r from-primary to-secondary text-primary-foreground;
+    @apply px-8 py-4 rounded-full font-semibold text-lg;
+    @apply shadow-lg hover:shadow-xl transform hover:scale-105;
+    @apply transition-all duration-300;
+  }
+
+  .btn-conference-gold {
+    @apply bg-gradient-to-r from-accent to-accent-light text-accent-foreground;
+    @apply px-6 py-3 rounded-full font-semibold;
+    @apply shadow-lg hover:shadow-xl transform hover:scale-105;
+    @apply transition-all duration-300;
+  }
+
+  /* Card Styles */
+  .card-conference {
+    @apply bg-card border border-border rounded-xl p-6;
+    @apply shadow-lg hover:shadow-2xl;
+    @apply transition-all duration-300 hover:transform hover:scale-[1.02];
+    background: var(--gradient-card);
+  }
+
+  .card-track {
+    @apply bg-gradient-to-br from-primary/5 to-secondary/5;
+    @apply border border-primary/20 rounded-xl p-6;
+    @apply hover:from-primary/10 hover:to-secondary/10;
+    @apply transition-all duration-300 cursor-pointer;
+    @apply hover:shadow-xl hover:border-primary/40;
+  }
+
+  /* Hero Section */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  /* Smooth Scrolling */
+  .smooth-scroll {
+    @apply scroll-smooth;
+  }
+
+  /* Animation Classes */
+  .animate-fade-in {
+    @apply animate-in fade-in duration-700;
+  }
+
+  .animate-slide-up {
+    @apply animate-in slide-in-from-bottom-4 duration-700;
+  }
+
+  .animate-scale-in {
+    @apply animate-in zoom-in-95 duration-500;
+  }
+
+  /* Back to Top Button */
+  .back-to-top {
+    @apply fixed bottom-6 right-6 z-50;
+    @apply bg-primary text-primary-foreground p-3 rounded-full;
+    @apply shadow-lg hover:shadow-xl;
+    @apply transform transition-all duration-300;
+    @apply hover:scale-110 opacity-0 invisible;
+  }
+
+  .back-to-top.show {
+    @apply opacity-100 visible;
   }
 }
