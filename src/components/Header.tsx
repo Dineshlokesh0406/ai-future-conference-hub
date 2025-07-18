@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Download, User, LogIn, Sun, Moon } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Menu, X, Download, User, LogIn, Sun, Moon, LogOut } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import collegeLogo from '@/assets/college-logo.jpg';
@@ -8,6 +10,8 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,8 +26,23 @@ const Header = () => {
     
     setIsDark(shouldBeDark);
     document.documentElement.classList.toggle('dark', shouldBeDark);
+
+    // Check for authenticated user
+    const checkUser = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      setUser(session?.user || null);
+    };
+    checkUser();
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setUser(session?.user || null);
+    });
     
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      subscription.unsubscribe();
+    };
   }, []);
 
   const toggleTheme = () => {
@@ -31,6 +50,18 @@ const Header = () => {
     setIsDark(newTheme);
     document.documentElement.classList.toggle('dark', newTheme);
     localStorage.setItem('theme', newTheme ? 'dark' : 'light');
+  };
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+  };
+
+  const handleAuthClick = () => {
+    if (user) {
+      navigate('/dashboard');
+    } else {
+      navigate('/auth');
+    }
   };
 
   const navItems = [
@@ -100,14 +131,29 @@ const Header = () => {
               <Download size={16} />
               <span>Brochure</span>
             </Button>
-            <Button variant="outline" size="sm" className="space-x-2">
-              <LogIn size={16} />
-              <span>Login</span>
-            </Button>
-            <Button variant="default" size="sm" className="space-x-2 btn-conference-primary">
-              <User size={16} />
-              <span>Signup</span>
-            </Button>
+            {user ? (
+              <>
+                <Button variant="outline" size="sm" className="space-x-2" onClick={handleAuthClick}>
+                  <User size={16} />
+                  <span>Dashboard</span>
+                </Button>
+                <Button variant="outline" size="sm" className="space-x-2" onClick={handleSignOut}>
+                  <LogOut size={16} />
+                  <span>Logout</span>
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button variant="outline" size="sm" className="space-x-2" onClick={handleAuthClick}>
+                  <LogIn size={16} />
+                  <span>Login</span>
+                </Button>
+                <Button variant="default" size="sm" className="space-x-2" onClick={handleAuthClick}>
+                  <User size={16} />
+                  <span>Signup</span>
+                </Button>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu */}
@@ -156,14 +202,29 @@ const Header = () => {
                     <Download size={16} />
                     <span>Download Brochure</span>
                   </Button>
-                  <Button variant="outline" className="space-x-2 justify-start">
-                    <LogIn size={16} />
-                    <span>Login</span>
-                  </Button>
-                  <Button variant="default" className="space-x-2 justify-start btn-conference-primary">
-                    <User size={16} />
-                    <span>Sign Up</span>
-                  </Button>
+                  {user ? (
+                    <>
+                      <Button variant="outline" className="space-x-2 justify-start" onClick={handleAuthClick}>
+                        <User size={16} />
+                        <span>Dashboard</span>
+                      </Button>
+                      <Button variant="outline" className="space-x-2 justify-start" onClick={handleSignOut}>
+                        <LogOut size={16} />
+                        <span>Logout</span>
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Button variant="outline" className="space-x-2 justify-start" onClick={handleAuthClick}>
+                        <LogIn size={16} />
+                        <span>Login</span>
+                      </Button>
+                      <Button variant="default" className="space-x-2 justify-start" onClick={handleAuthClick}>
+                        <User size={16} />
+                        <span>Sign Up</span>
+                      </Button>
+                    </>
+                  )}
                 </div>
               </div>
             </SheetContent>

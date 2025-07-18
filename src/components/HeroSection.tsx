@@ -52,21 +52,21 @@ const HeroSection = () => {
         backgroundAttachment: 'fixed'
       }}
     >
-      {/* AICTE Sponsored Badge - Moved outside hero content */}
-      <div className="absolute top-24 left-1/2 transform -translate-x-1/2 z-20 animate-fade-in">
-        <div className="inline-flex items-center bg-accent/20 backdrop-blur-sm border border-accent/30 rounded-full px-6 py-2">
-          <span className="text-accent font-semibold text-sm">AICTE SPONSORED</span>
+      {/* AICTE Sponsored Badge - Positioned below navbar */}
+      <div className="absolute top-32 left-1/2 transform -translate-x-1/2 z-20 animate-fade-in">
+        <div className="inline-flex items-center bg-gradient-to-r from-yellow-400 to-yellow-600 text-black px-6 py-2 rounded-full shadow-lg">
+          <span className="font-bold text-sm">AICTE SPONSORED</span>
         </div>
       </div>
 
       {/* Hero Content */}
-      <div className="container mx-auto px-4 text-center text-white relative z-10 mt-16">
-        <div className="max-w-6xl mx-auto">
+      <div className="container mx-auto px-4 text-center text-white relative z-10 pt-24">
+        <div className="max-w-6xl mx-auto space-y-8">
 
           {/* Main Title */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-slide-up">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight animate-slide-up">
             Exploring AI and ML for 
-            <span className="block text-accent">Better Tomorrow</span>
+            <span className="block text-accent mt-2">Better Tomorrow</span>
           </h1>
 
           {/* Subtitle */}
