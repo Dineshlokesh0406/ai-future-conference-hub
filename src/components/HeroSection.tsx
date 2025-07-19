@@ -84,9 +84,8 @@ const HeroSection = () => {
         <div className="max-w-6xl mx-auto space-y-8">
 
           {/* Main Title */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight animate-slide-up">
-            Exploring AI and ML for 
-            <span className="block text-white mt-2">Better Tomorrow</span>
+          <h1 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight animate-slide-up">
+            <span className="text-white">Exploring AI and ML for Better Tomorrow</span>
           </h1>
 
           {/* Subtitle */}
