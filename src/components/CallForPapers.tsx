@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 
 const CallForPapers = () => {
   return (
-    <section id="call-for-papers" className="py-20 bg-background">
+    <section id="call-for-papers" className="py-20 bg-background text-foreground">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">

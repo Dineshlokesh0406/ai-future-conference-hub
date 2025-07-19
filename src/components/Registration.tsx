@@ -74,7 +74,7 @@ const Registration = () => {
   };
 
   return (
-    <section id="registration" className="py-20 bg-background">
+    <section id="registration" className="py-20 bg-background text-foreground">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">

@@ -52,10 +52,30 @@ const HeroSection = () => {
         backgroundAttachment: 'fixed'
       }}
     >
-      {/* AICTE Sponsored Badge - Positioned below navbar */}
-      <div className="absolute top-32 left-1/2 transform -translate-x-1/2 z-20 animate-fade-in">
-        <div className="inline-flex items-center bg-gradient-to-r from-yellow-400 to-yellow-600 text-black px-6 py-2 rounded-full shadow-lg">
-          <span className="font-bold text-sm">AICTE SPONSORED</span>
+      {/* AICTE Sponsored Badge with Images - Positioned below navbar */}
+      <div className="absolute top-28 left-1/2 transform -translate-x-1/2 z-20 animate-fade-in">
+        <div className="flex items-center justify-center space-x-4 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg border border-white/20">
+          <img 
+            src="/lovable-uploads/7d55e868-074f-4430-8df5-2d5dcb26e4cf.png" 
+            alt="College Logo" 
+            className="h-8 w-8 rounded-full"
+          />
+          <img 
+            src="/lovable-uploads/6c900903-310c-4cbd-9b24-747b51f6e499.png" 
+            alt="Sree Siddalinga Swamiji" 
+            className="h-8 w-8 rounded-full"
+          />
+          <span className="font-bold text-sm text-white">AICTE SPONSORED</span>
+          <img 
+            src="/lovable-uploads/c74c0d0e-e099-48e3-aeab-a52a18002162.png" 
+            alt="Current Leader" 
+            className="h-8 w-8 rounded-full"
+          />
+          <img 
+            src="/lovable-uploads/dd862d3f-077b-4c4d-b78c-692c886b63cc.png" 
+            alt="AICTE Logo" 
+            className="h-8 w-8 rounded-full"
+          />
         </div>
       </div>
 
@@ -66,7 +86,7 @@ const HeroSection = () => {
           {/* Main Title */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight animate-slide-up">
             Exploring AI and ML for 
-            <span className="block text-accent mt-2">Better Tomorrow</span>
+            <span className="block text-white mt-2">Better Tomorrow</span>
           </h1>
 
           {/* Subtitle */}

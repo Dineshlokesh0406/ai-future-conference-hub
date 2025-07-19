@@ -79,7 +79,7 @@ const Committee = () => {
   ];
 
   return (
-    <section id="committee" className="py-20 bg-muted/30">
+    <section id="committee" className="py-20 bg-muted/30 text-foreground">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
@@ -206,7 +206,7 @@ const Committee = () => {
         </div>
 
         {/* Advisory Committee */}
-        <div>
+        <div className="mb-16">
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold text-primary mb-4">Advisory Committee</h3>
             <p className="text-lg text-muted-foreground">Esteemed academicians and researchers providing strategic guidance</p>
@@ -229,6 +229,49 @@ const Committee = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+
+        {/* Support Team */}
+        <div>
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-primary mb-4">Support Team</h3>
+            <p className="text-lg text-muted-foreground">Dedicated team members ensuring smooth conference operations</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card className="card-conference">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <Users className="text-primary" size={24} />
+                </div>
+                <h4 className="font-bold text-foreground mb-2">Sowmya L</h4>
+                <p className="text-sm font-medium text-secondary mb-2">Registration Support</p>
+                <p className="text-sm text-muted-foreground">9480112873</p>
+              </CardContent>
+            </Card>
+
+            <Card className="card-conference">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-secondary/20 to-accent/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <Users className="text-secondary" size={24} />
+                </div>
+                <h4 className="font-bold text-foreground mb-2">Shruthi P</h4>
+                <p className="text-sm font-medium text-secondary mb-2">Technical Support</p>
+                <p className="text-sm text-muted-foreground">8970599606</p>
+              </CardContent>
+            </Card>
+
+            <Card className="card-conference">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-accent/20 to-primary/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <Users className="text-accent" size={24} />
+                </div>
+                <h4 className="font-bold text-foreground mb-2">Uday Kumar</h4>
+                <p className="text-sm font-medium text-secondary mb-2">Accommodation Support</p>
+                <p className="text-sm text-muted-foreground">9620455342</p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
